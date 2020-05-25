@@ -1,0 +1,45 @@
+#################################### common config : ####################################
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 0
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+  forward-headers-strategy: framework
+  servlet:
+    context-path: /api
+    session:
+      timeout: 30s
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: *
+    web:
+      exposure:
+        include: *
+  auditevents:
+    enabled: true
+
+spring:
+  application:
+    name: mine-spider
+  profiles:
+    active: local
+  freemarker:
+    prefer-file-system-access: false
+  mvc:
+    static-path-pattern: /static/**
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  aop:
+    auto: true
+  messages:
+    basename: i18n/message
