@@ -13,6 +13,7 @@
 
     <modules>
         <module>spider-core</module>
+        <module>spider-impl</module>
         <module>spider-web</module>
     </modules>
 

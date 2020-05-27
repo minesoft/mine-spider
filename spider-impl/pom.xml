@@ -10,15 +10,21 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.sixlab.minesoft.spider</groupId>
-    <artifactId>spider-core</artifactId>
+    <artifactId>spider-impl</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spider-core</name>
+    <name>spider-impl</name>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>cn.sixlab.minesoft.spider</groupId>
+            <artifactId>spider-core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -30,11 +36,6 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.14.4</version>
-        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
