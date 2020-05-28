@@ -1,30 +1,18 @@
 package cn.sixlab.minesoft.spider.core.utils;
 
+import cn.sixlab.minesoft.spider.core.vo.SpiderRequest;
+import lombok.Data;
+
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
+@Data
 public class Content extends LinkedHashMap<String, Object> {
 
     private String spiderName;
     private String url;
-
-    public String getSpiderName() {
-        return spiderName;
-    }
-
-    public void setSpiderName(String spiderName) {
-        this.put("spiderName", spiderName);
-        this.spiderName = spiderName;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.put("url", url);
-        this.url = url;
-    }
+    private List<SpiderRequest> requestList;
 
     public Content() { }
 

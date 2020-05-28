@@ -29,7 +29,7 @@ public class IndexController {
             public List<SpiderRequest> init() {
                 List<SpiderRequest> requestList = new ArrayList<>();
 
-                String url = "https://www.baidu.com/s?ie=utf-8&wd=init";
+                String url = "https://cn.bing.com/search?q=init";
                 for (int i = 0; i < 5; i++) {
                     SpiderRequest request = new SpiderRequest();
 
@@ -44,7 +44,7 @@ public class IndexController {
             public List<SpiderRequest> generate() {
                 List<SpiderRequest> requestList = new ArrayList<>();
 
-                String url = "https://www.baidu.com/s?ie=utf-8&wd=generate";
+                String url = "https://cn.bing.com/search?q=generate";
                 for (int i = 5; i < 10; i++) {
                     SpiderRequest request = new SpiderRequest();
 

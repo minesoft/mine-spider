@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Slf4j
 @Data
-public class SpiderTask implements Runnable {
+public class SpiderTask {
 
     private String spiderName;
 
@@ -24,6 +24,7 @@ public class SpiderTask implements Runnable {
 
     private LinkManager linkManager = new LinkManagerImpl();
     private PropsManager propsManager = new PropsManagerImpl();
+    private int waitingSeconds = 60;
 
     private SpiderTask() {
     }
@@ -33,12 +34,7 @@ public class SpiderTask implements Runnable {
         this.generator = generator;
     }
 
-    @Override
     public void run() {
-        runOnce();
-    }
-
-    public void runOnce() {
         SpiderRequest request = linkManager.nextRequest();
         if (request == null) {
             linkManager.addLinks(generator.generate());
@@ -52,14 +48,19 @@ public class SpiderTask implements Runnable {
                 Content content = extracter.extract(response);
 
                 if (null != content) {
+                    if (null != content.getRequestList()) {
+                        linkManager.addLinks(content.getRequestList());
+                    }
+
                     saver.saveContent(content);
                 }
             }
         }
-    }
-
-    public void stop() {
-
+        try {
+            Thread.sleep(waitingSeconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public Spider build() {

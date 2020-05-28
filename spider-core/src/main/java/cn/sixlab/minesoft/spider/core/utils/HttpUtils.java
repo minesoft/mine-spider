@@ -51,7 +51,7 @@ public class HttpUtils {
                 if (response.body() != null) {
                     try {
                         String text = response.body().string();
-                        log.info("返回：" + text);
+                        // log.info("返回：" + text);
                         return text;
                     } catch (IOException e) {
                         log.error("请求IO异常：", e);
