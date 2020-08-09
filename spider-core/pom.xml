@@ -9,9 +9,9 @@
         <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cn.sixlab.minesoft.spider</groupId>
+    <groupId>tech.minesoft.mine.spider</groupId>
     <artifactId>spider-core</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>spider-core</name>
 
     <properties>

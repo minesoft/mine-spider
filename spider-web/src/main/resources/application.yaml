@@ -8,24 +8,38 @@ server:
       remote-ip-header: x-forwarded-for
       protocol-header: x-forwarded-proto
   forward-headers-strategy: framework
+  path: /api
+  context-path: /api
   servlet:
     context-path: /api
     session:
       timeout: 30s
-
-management:
-  endpoint:
-    health:
-      show-details: always
-  endpoints:
-    jmx:
-      exposure:
-        include: *
-    web:
-      exposure:
-        include: *
-  auditevents:
-    enabled: true
+#
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  endpoints:
+#    jmx:
+#      exposure:
+#        include: "*"
+#    web:
+#      exposure:
+#        include: "*"
+#  auditevents:
+#    enabled: true
+#  server:
+#    servlet:
+#      context-path: /api
+#  security:
+#    enabled: true
+#security:
+#
+#  user:
+#    name: admin
+#    password: qwe123
+#  basic:
+#    enabled: false
 
 spring:
   application:

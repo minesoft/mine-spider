@@ -1,0 +1,101 @@
+package tech.minesoft.mine.spider.core;
+
+import lombok.extern.slf4j.Slf4j;
+import tech.minesoft.mine.spider.core.component.*;
+import tech.minesoft.mine.spider.core.impl.DownloaderImpl;
+import tech.minesoft.mine.spider.core.impl.LinkManagerImpl;
+import tech.minesoft.mine.spider.core.utils.Content;
+import tech.minesoft.mine.spider.core.vo.SpiderRequest;
+import tech.minesoft.mine.spider.core.vo.SpiderResponse;
+
+import java.util.List;
+import java.util.UUID;
+
+@Slf4j
+public class Spider {
+    public static class SpiderBuilder {
+        private final Spider spider;
+        public SpiderBuilder(Spider spider) {
+            this.spider = spider;
+        }
+
+        public Spider build(){
+            if (spider.spiderName == null) {
+                spider.spiderName = UUID.randomUUID().toString();
+            }
+            if (spider.generator == null) {
+                throw new RuntimeException("链接生成器未设置");
+            }
+            if (spider.extractor == null) {
+                throw new RuntimeException("内容提取器未设置");
+            }
+            if (spider.saver == null) {
+                throw new RuntimeException("内容保存器未设置");
+            }
+            if (spider.manager == null) {
+                spider.manager = new LinkManagerImpl();
+            }
+            if (spider.downloader == null) {
+                spider.downloader = new DownloaderImpl(spider.spiderName);
+            }
+
+            return spider;
+        }
+    }
+
+    public static SpiderBuilder builder(){
+        return new SpiderBuilder(new Spider());
+    }
+
+    private String spiderName;
+    // 需要自己实现
+    private SpiderGenerator generator;
+    private SpiderExtractor extractor;
+    private SpiderSaver saver;
+
+    // 内置推荐自己实现
+    private LinkManager manager;
+
+    // 纯内置
+    private Downloader downloader;
+
+    public void setSpiderName(String spiderName) {
+        this.spiderName = spiderName;
+    }
+
+    public void setGenerator(SpiderGenerator generator) {
+        this.generator = generator;
+    }
+
+    public void setExtractor(SpiderExtractor extractor) {
+        this.extractor = extractor;
+    }
+
+    public void setSaver(SpiderSaver saver) {
+        this.saver = saver;
+    }
+
+    public void linkTask(){
+        List<SpiderRequest> links = generator.generate(spiderName);
+
+        manager.addLinks(links);
+    }
+
+    public void crawTask(){
+        SpiderRequest request = manager.nextRequest();
+
+        if(null!=request){
+            SpiderResponse response = downloader.download(request);
+
+            if(null!=request){
+                Content content = extractor.extract(request, response);
+
+                if(null!=content){
+                    saver.saveContent(content);
+
+                    manager.addLinks(content.getRequestList());
+                }
+            }
+        }
+    }
+}

@@ -8,9 +8,9 @@
         <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cn.sixlab.minesoft.spider</groupId>
+    <groupId>tech.minesoft.mine.spider</groupId>
     <artifactId>spider-web</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>spider-web</name>
     <description>Web project for mine-spider</description>
 
@@ -20,27 +20,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.sixlab.minesoft.spider</groupId>
+            <groupId>tech.minesoft.mine.spider</groupId>
             <artifactId>spider-impl</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>cn.sixlab.minesoft.spider</groupId>
+            <groupId>tech.minesoft.mine.spider</groupId>
             <artifactId>spider-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
