@@ -11,7 +11,7 @@
     </parent>
     <groupId>tech.minesoft.mine.spider</groupId>
     <artifactId>spider-core</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <name>spider-core</name>
 
     <properties>
@@ -51,10 +51,6 @@
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

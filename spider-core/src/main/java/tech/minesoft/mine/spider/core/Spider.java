@@ -19,6 +19,36 @@ public class Spider {
             this.spider = spider;
         }
 
+        public SpiderBuilder setSpiderName(String spiderName) {
+            spider.spiderName = spiderName;
+            return this;
+        }
+
+        public SpiderBuilder setGenerator(SpiderGenerator generator) {
+            spider.generator = generator;
+            return this;
+        }
+
+        public SpiderBuilder setExtractor(SpiderExtractor extractor) {
+            spider.extractor = extractor;
+            return this;
+        }
+
+        public SpiderBuilder setSaver(SpiderSaver saver) {
+            spider.saver = saver;
+            return this;
+        }
+
+        public SpiderBuilder setManager(LinkManager manager) {
+            spider.manager = manager;
+            return this;
+        }
+
+        public SpiderBuilder setDownloader(Downloader downloader) {
+            spider.downloader = downloader;
+            return this;
+        }
+
         public Spider build(){
             if (spider.spiderName == null) {
                 spider.spiderName = UUID.randomUUID().toString();
@@ -36,7 +66,7 @@ public class Spider {
                 spider.manager = new LinkManagerImpl();
             }
             if (spider.downloader == null) {
-                spider.downloader = new DownloaderImpl(spider.spiderName);
+                spider.downloader = new DownloaderImpl();
             }
 
             return spider;

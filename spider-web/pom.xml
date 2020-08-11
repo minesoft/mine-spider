@@ -10,7 +10,7 @@
     </parent>
     <groupId>tech.minesoft.mine.spider</groupId>
     <artifactId>spider-web</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <name>spider-web</name>
     <description>Web project for mine-spider</description>
 
@@ -22,12 +22,12 @@
         <dependency>
             <groupId>tech.minesoft.mine.spider</groupId>
             <artifactId>spider-impl</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.5-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tech.minesoft.mine.spider</groupId>
             <artifactId>spider-core</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.5-SNAPSHOT</version>
         </dependency>
 
         <dependency>

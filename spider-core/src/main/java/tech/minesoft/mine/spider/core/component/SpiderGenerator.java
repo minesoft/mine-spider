@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface SpiderGenerator {
 
-    List<SpiderRequest> init(String spiderName);
-
     List<SpiderRequest> generate(String spiderName);
 
 }

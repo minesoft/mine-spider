@@ -22,10 +22,6 @@ public class HttpUtils {
     }
 
     public static SpiderResponse request(Request request) {
-        return request(request, "default");
-    }
-
-    public static SpiderResponse request(Request request, String spiderName) {
         try {
             Response response = client.newCall(request).execute();
 

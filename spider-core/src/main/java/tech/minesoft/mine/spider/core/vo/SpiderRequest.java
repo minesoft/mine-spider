@@ -17,6 +17,10 @@ public class SpiderRequest {
         return this;
     }
 
+    public Object get(String key){
+        return attributes.get(key);
+    }
+
     public static SpiderRequest build(String spiderName, Request request) {
         SpiderRequest spiderRequest = new SpiderRequest();
         spiderRequest.setSpiderName(spiderName);

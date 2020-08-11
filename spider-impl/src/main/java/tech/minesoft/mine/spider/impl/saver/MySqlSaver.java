@@ -1,13 +1,15 @@
 package tech.minesoft.mine.spider.impl.saver;
 
-import tech.minesoft.mine.spider.core.component.SpiderSaver;
-import tech.minesoft.mine.spider.core.utils.Content;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import tech.minesoft.mine.spider.core.component.SpiderSaver;
+import tech.minesoft.mine.spider.core.utils.Content;
 
 import java.sql.*;
-import java.util.Date;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public class MySqlSaver implements SpiderSaver {
@@ -37,7 +39,7 @@ public class MySqlSaver implements SpiderSaver {
 
             names.add(columnName);
             places.add("?");
-            values.add(content.get(key));
+            values.add(content.result.get(key));
         }
 
         String cols = StringUtils.join(names, ",");
@@ -117,12 +119,5 @@ public class MySqlSaver implements SpiderSaver {
                 "test_log",
                 db
         );
-
-        Content content = new Content();
-
-        content.put("id", "1");
-        content.put("account", "name");
-        content.put("amount", "10.1");
-        content.put("time", new Date());
     }
 }

@@ -37,7 +37,7 @@ public class MySqlSaver implements SpiderSaver {
 
             names.add(columnName);
             places.add("?");
-            values.add(content.get(key));
+            values.add(content.result.get(key));
         }
 
         String cols = String.join(",",names);

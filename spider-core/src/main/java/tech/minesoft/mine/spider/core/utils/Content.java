@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 @Data
-public class Content extends LinkedHashMap<String, Object> {
+public class Content{
 
     private SpiderRequest request;
     private List<SpiderRequest> requestList;
