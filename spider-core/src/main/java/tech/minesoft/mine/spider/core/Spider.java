@@ -112,15 +112,19 @@ public class Spider {
     }
 
     public void crawTask(){
+        log.info("爬虫开始");
         SpiderRequest request = manager.nextRequest();
 
         if(null!=request){
+            log.info("爬虫开始爬取");
             SpiderResponse response = downloader.download(request);
 
             if(null!=request){
+                log.info("爬虫爬取结果开始处理");
                 Content content = extractor.extract(request, response);
 
                 if(null!=content){
+                    log.info("爬虫结果保存");
                     saver.saveContent(content);
 
                     manager.addLinks(content.getRequestList());
