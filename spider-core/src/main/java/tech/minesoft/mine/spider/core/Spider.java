@@ -77,7 +77,7 @@ public class Spider {
         return new SpiderBuilder(new Spider());
     }
 
-    private String spiderName;
+    public String spiderName;
     // 需要自己实现
     private SpiderGenerator generator;
     private SpiderExtractor extractor;
@@ -112,24 +112,29 @@ public class Spider {
     }
 
     public void crawTask(){
-        log.info("爬虫开始");
+        log.info("爬虫开始:"+spiderName);
         SpiderRequest request = manager.nextRequest();
 
         if(null!=request){
-            log.info("爬虫开始爬取");
+            log.info("爬虫开始爬取:"+spiderName);
             SpiderResponse response = downloader.download(request);
 
             if(null!=request){
-                log.info("爬虫爬取结果开始处理");
+                log.info("爬虫爬取结果开始处理:"+spiderName);
                 Content content = extractor.extract(request, response);
 
                 if(null!=content){
-                    log.info("爬虫结果保存");
+                    log.info("爬虫结果保存:"+spiderName);
                     saver.saveContent(content);
 
                     manager.addLinks(content.getRequestList());
                 }
             }
         }
+        log.info("爬虫完成:"+spiderName);
+    }
+
+    public void addLink(SpiderRequest... requests){
+        manager.addLinks(requests);
     }
 }

@@ -8,8 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class LinkManagerImpl implements LinkManager {
-
-    private static LinkedList<SpiderRequest> linkList = new LinkedList<>();
+    private final LinkedList<SpiderRequest> linkList = new LinkedList<>();
 
     @Override
     public void addLinks(SpiderRequest... requests) {

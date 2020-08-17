@@ -27,4 +27,8 @@ public class SpiderRequest {
         spiderRequest.setRequest(request);
         return spiderRequest;
     }
+
+    public String getUrl(){
+        return request.url().toString();
+    }
 }
